@@ -1,35 +1,34 @@
 <?php
 $str = strtolower($_POST['secureCheck']);
 function spamcheck($field)
-  {
-  //filter_var() sanitizes the e-mail
-  //address using FILTER_SANITIZE_EMAIL
-  $field=filter_var($field, FILTER_SANITIZE_EMAIL);
-
-  //filter_var() validates the e-mail
-  //address using FILTER_VALIDATE_EMAIL
-  if(filter_var($field, FILTER_VALIDATE_EMAIL))
-    {
-    return TRUE;
-    }
-  else
-    {
-    return FALSE;
-    }
-  }
+{
+//filter_var() sanitizes the e-mail
+//address using FILTER_SANITIZE_EMAIL
+$field=filter_var($field, FILTER_SANITIZE_EMAIL);
+//filter_var() validates the e-mail
+//address using FILTER_VALIDATE_EMAIL
+if(filter_var($field, FILTER_VALIDATE_EMAIL))
+{
+return TRUE;
+}
+else
+{
+return FALSE;
+}
+}
 $mailcheck = spamcheck($_POST['email']);
 if($mailcheck == TRUE){
 if(sha1($str) == $_POST['checkSecure']){	
-	if(($_POST['name'] != "Name:" && $_POST['name'] != "") && (($_POST['number'] != "Number:" && $_POST['number'] != "") && ($_POST['email'] != "E-mail:" && $_POST['email'] != "") && ($_POST['comments'] != "Message:" && $_POST['comments'] != "")){
-	  $message = "Name:&nbsp;&nbsp;&nbsp;&nbsp;" .$_POST['name'] ."<br>" . "E-Mail:&nbsp;&nbsp;&nbsp;&nbsp;".$_POST['email']."<br>Message:<br>".$_POST['comments'];	 
-	 mail("tturner@digitalsc.com", "Contact Us From SpartanCopy.com", $message, "From: " . $_POST['email'] . "\nMIME-Version: 1.0\nContent-type: text/html; charset=iso-8859-1");
-		 $var = 1;
-		}
-	else
-	{
-		$var = 3;
-	}
-	 }
+if(($_POST['name'] != "Name:" && $_POST['name'] != "") && ($_POST['number'] != "Number:" && $_POST['number'] != "") && ($_POST['email'] != "E-mail:" && $_POST['email'] != "") && ($_POST['comments'] != "Message:" && $_POST['comments'] != "")){
+$message = "Name:&nbsp;&nbsp;&nbsp;&nbsp;" .$_POST['name'] ."<br>" . "E-Mail:&nbsp;&nbsp;&nbsp;&nbsp;".$_POST['email']."<br>Message:<br>".$_POST['comments'];	 
+mail("tturner@digitalsc.com", "Contact Us From SpartanCopy.com", $message, "From: " . $_POST['email'] . "\nMIME-Version: 1.0\nContent-type: text/html; charset=iso-8859-1");
+$var = 1;
+}
+else
+{
+$var = 3;
+}
+}
 else{
 $var = 2;
 }
@@ -38,11 +37,7 @@ else
 {
 $var = 4;
 }
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
