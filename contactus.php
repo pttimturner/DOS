@@ -217,7 +217,7 @@ $var = 4;
                             <h5>Contact Form</h5>
                             <div class="form">
                                 <!-- Contact form (not working)-->
-                                <form class="form-horizontal">
+                                <form action="contactus.php" method="post" class="form-horizontal">
                                     <!-- Name -->
                                     <div class="form-group">
                                         <label class="control-label col-md-3" for="name">Name</label>
